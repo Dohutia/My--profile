@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #availability-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        .redirect-button {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 100px;
+        }
+        .redirect-button:hover {
+            background-color: #0054a4;
+        }
+    </style>
+    <script>
+        function showAvailabilityMessage() {
+            var stateSelect = document.getElementById("state");
+            var messageContainer = document.getElementById("availability-message");
+            if (stateSelect.value === "Andhra Pradesh" || stateSelect.value === "Arunachal Pradesh") {
+                messageContainer.style.display = "block";
+            }
+            else {
+                messageContainer.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Application Form</h1>
+    <form action="submit.php" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="father_name">Father's Name:</label>
+        <input type="text" id="father_name" name="father_name" required><br><br>
+
+        <label for="mother_name">Mother's Name:</label>
+        <input type="text" id="mother_name" name="mother_name" required><br><br>
+
+        <label for="qualification">Qualification:</label>
+        <input type="text" id="qualification" name="qualification" required><br><br>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" required onchange="showAvailabilityMessage()">
+            <option value="" disabled selected>Select your state</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+        </select><br><br>
+         <label for="district">District:</label>
+        <select id="district" name="district" required onchange="showAvailabilityMessage()">
+            <option value="" disabled selected>Select your district</option>
+            <option value="Tinsukia">Tinsukia</option></option>
+            <option value="Dibrugarh">Dibrugarh</option>
+            <option value="Guahati">Guahati</option>
+            <option value="Nagaon">Nagaon</option>
+            <option value="Sivsagar">sivsagar</option>
+            
+        </select><br><br>
+        <div id="availability-message" style="display: none; color: red;">
+            Currently not available.
+        </div>
+ <button class="redirect-button" onclick="window.location.href='new.html'">submit</button>
+    </form>
+</body>
+</html>
